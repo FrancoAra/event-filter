@@ -5,9 +5,9 @@ import algorithms.types._
 
 class Pagerank (graph: Graph, λ: Float, max: Int) extends FilterAlgorithm (graph) {
 
-  def init = computePagerank(
-    graph.vertices.map((_ -> 1f / graph.n)).toMap, 1
-  )
+  val thresholdMax: Float = values.map(_._2).max
+
+  def init = computePagerank(graph.vertices.map((_ -> 1f / graph.n)).toMap, 1)
 
   private def computePagerank (
     pagerank: Map[Vertex, Float],
